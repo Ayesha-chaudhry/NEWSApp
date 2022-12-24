@@ -19,7 +19,7 @@ const SwiperBanner = ({ data }) => {
   return (
     <View style={styles.swiper}>
       <Swiper
-        style={{ height: width /2 }}
+        style={{ height: width / 2 }}
         showsButtons={false}
         activeDotColor={WHITE_COLOR}
         dotStyle={{ opacity: 1, borderColor: "white", borderWidth: 1 }}
@@ -30,12 +30,8 @@ const SwiperBanner = ({ data }) => {
           console.log("🚀 ~ file: swiper.js:30 ~ {data.map ~ item", item);
           let { title, urlToImage } = destructuredPostData(item);
 
-           let titleCovert = DecodeTitle(title.rendered);
-
           return (
-            <TouchableOpacity
-            key={item.title}
-            onPress={() => alert(Pressed)}>
+            <TouchableOpacity key={item.title} onPress={() => alert(Pressed)}>
               <ImageBackground
                 style={styles.banner}
                 borderRadius={6}
@@ -45,10 +41,11 @@ const SwiperBanner = ({ data }) => {
                   colors={["rgba(255,255,255,0)", "rgba(0,0,0,1)"]}
                   style={styles.cardGrad}
                 >
-                  <View style={styles.textContainer}></View>
-                  <Text numberOfLines={2} style={styles.swiperTextWrapper}>
-                    text
-                  </Text>
+                  <View style={styles.textContainer}>
+                    <Text numberOfLines={2} style={styles.swiperTextWrapper}>
+                      {title}
+                    </Text>
+                  </View>
                 </LinearGradient>
               </ImageBackground>
             </TouchableOpacity>
@@ -86,7 +83,9 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     width: "100%",
-    justifyContent: "center",
+    height : '80%',
+    justifyContent: 'center',
     alignItems: "center",
+    marginTop : 35
   },
 });
