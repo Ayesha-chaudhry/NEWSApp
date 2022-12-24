@@ -10,53 +10,50 @@ import {
 import React from "react";
 import Swiper from "react-native-swiper";
 import { LinearGradient } from "expo-linear-gradient";
-import { WHITE_COLOR } from "../res/colors";
-import { DecodeTitle, destructuredPostData } from '../util/util'
+import { WHITE_COLOR } from "../../res/colors";
+import { DecodeTitle, destructuredPostData } from "../../utill/util";
 
 const { height, width } = Dimensions.get("window");
 
-const SwiperBanner = () => {
+const SwiperBanner = ({ data }) => {
   return (
     <View style={styles.swiper}>
       <Swiper
-        style={{ height: 300 }}
+        style={{ height: width /2 }}
         showsButtons={false}
         activeDotColor={WHITE_COLOR}
         dotStyle={{ opacity: 1, borderColor: "white", borderWidth: 1 }}
         autoplay={true}
         autoplayTimeout={4}
       >
-        {
-            data.map((item) => {
-                let {title, urlToImage} = destructuredPostData(item)
+        {data.map((item) => {
+          console.log("🚀 ~ file: swiper.js:30 ~ {data.map ~ item", item);
+          let { title, urlToImage } = destructuredPostData(item);
 
-                let titleCovert = DecodeTitle(title.rendered)
+           let titleCovert = DecodeTitle(title.rendered);
 
-                return(
-                    <TouchableOpacity
-                    key={item.urlToImage}
-                    onPress={() => alert(Pressed)}
-                    >
-                        <ImageBackground
-                        style={styles.banner}
-                        borderRadius={6}
-                        source={{uri: urlToImage}}
-                        >
-                            <LinearGradient
-                            colors={['rgba(255,255,255,0)', 'rgba(0,0,0,1)']}
-                            style={styles.cardGrad}
-                            >
-                                <View style={styles.textContainer}></View>
-                                <Text numberOfLines={2} style={styles.swiperTextWrapper}>
-                                    {titleCovert}
-                                </Text>
-                            </LinearGradient>                            
-                        </ImageBackground>
-                    </TouchableOpacity>
-                )
-
-            })
-        }
+          return (
+            <TouchableOpacity
+            key={item.title}
+            onPress={() => alert(Pressed)}>
+              <ImageBackground
+                style={styles.banner}
+                borderRadius={6}
+                source={{ uri: urlToImage }}
+              >
+                <LinearGradient
+                  colors={["rgba(255,255,255,0)", "rgba(0,0,0,1)"]}
+                  style={styles.cardGrad}
+                >
+                  <View style={styles.textContainer}></View>
+                  <Text numberOfLines={2} style={styles.swiperTextWrapper}>
+                    text
+                  </Text>
+                </LinearGradient>
+              </ImageBackground>
+            </TouchableOpacity>
+          );
+        })}
       </Swiper>
     </View>
   );
@@ -68,7 +65,7 @@ const styles = StyleSheet.create({
     width: width,
     height: width / 2,
     alignItems: "center",
-    marginTop: 20,
+    marginTop: 30,
     borderRadius: 10,
   },
   banner: {
