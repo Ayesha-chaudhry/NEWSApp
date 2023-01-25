@@ -27,11 +27,11 @@ const SwiperBanner = ({ data }) => {
         autoplayTimeout={4}
       >
         {data.map((item) => {
-          console.log("🚀 ~ file: swiper.js:30 ~ {data.map ~ item", item);
+          {/* console.log("🚀 ~ file: swiper.js:30 ~ {data.map ~ item", item); */}
           let { title, urlToImage } = destructuredPostData(item);
 
           return (
-            <TouchableOpacity key={item.title} onPress={() => alert(Pressed)}>
+            <TouchableOpacity key={item.title} onPress={() => {}}>
               <ImageBackground
                 style={styles.banner}
                 borderRadius={6}
